@@ -21,7 +21,7 @@ namespace GTI.Especiales.Aprendizaje.Client.Models
                 {
                     EmployeID = 1,
                     EmployeName = "name",
-                    RFC = "lalaalala",
+                    RFC = "rfc",
                     Salary = 22.50m,
                }
             };

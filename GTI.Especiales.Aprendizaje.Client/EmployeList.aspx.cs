@@ -5,82 +5,42 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using GTI.Especiales.Aprendizaje.Client.Models;
+using GTI.Especiales.Aprendizaje.Client.Data;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
 
 namespace GTI.Especiales.Aprendizaje.Client
 {
     public partial class EmployeList : System.Web.UI.Page
     {
+        protected EmployeRepository repository = new EmployeRepository();
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        protected void cancelButton_Click(object sender, EventArgs e)
+        public void EmployeGrid_UpdateItem(int employeID)
         {
+            //Response.Redirect("~/EmployeUpdate?id=" + employeID);
+
+             var employe = new Employe();
+             TryUpdateModel(employe);
+             repository.UpdateEmploye(employe);
         }
 
-        public void addEmployeForm_InsertItem()
+        public void EmployeGrid_DeleteItem(int employeID)
         {
-        }
 
-        public void addEmployeForm_ItemInserted()
-        {
         }
-        
 
         public List<Employe> GetEmployes()
         {
-            var employe = new List<Employe> {
-                new Employe
-                {
-                    EmployeID = 1,
-                    EmployeName = "Alonso",
-                    RFC = "LAMA940810HBCRJL00",
-                    Salary = 22.50m,
-                    Active = true
-               },
-                new Employe
-                {
-                    EmployeID = 2,
-                    EmployeName = "Jesus",
-                    RFC = "LAMA940810HBCRJL00",
-                    Salary = 22.50m,
-                    Active = true
-               },
-                new Employe
-                {
-                    EmployeID = 3,
-                    EmployeName = "Tomas",
-                    RFC = "LAMA940810HBCRJL00",
-                    Salary = 22.50m,
-                    Active = false
-               },
-                new Employe
-                {
-                    EmployeID = 4,
-                    EmployeName = "Betty",
-                    RFC = "LAMA940810HBCRJL00",
-                    Salary = 22.50m,
-                    Active = true
-               },
-                new Employe
-                {
-                    EmployeID = 5,
-                    EmployeName = "Luis",
-                    RFC = "LAMA940810HBCRJL00",
-                    Salary = 22.50m,
-                    Active = false
-               },
-                new Employe
-                {
-                    EmployeID = 6,
-                    EmployeName = "Ricardo",
-                    RFC = "LAMA940810HBCRJL00",
-                    Salary = 22.50m,
-                    Active = false
-               }
-            };
-            return employe;
+            Employe employe = repository.GetEmployeById(1);
+
+            return repository.GetEmployes();
         }
     }
 }

@@ -7,6 +7,7 @@ namespace GTI.Especiales.Aprendizaje.Client.Models
 {
     public class Employe
     {
+        [ScaffoldColumn(false)]
         public int EmployeID { get; set; }
         public string EmployeName { get; set; }
         public string RFC { get; set; }
