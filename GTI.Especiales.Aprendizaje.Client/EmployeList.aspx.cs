@@ -16,19 +16,18 @@ namespace GTI.Especiales.Aprendizaje.Client
 {
     public partial class EmployeList : System.Web.UI.Page
     {
-        protected EmployeRepository repository = new EmployeRepository();
+        private string _connectionString = ConfigurationManager.ConnectionStrings["ServerConnection"].ConnectionString;
+        private EmployeeRepository _repository;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            _repository = new EmployeeRepository(_connectionString);
         }
 
         public void EmployeGrid_UpdateItem(int employeID)
         {
-            //Response.Redirect("~/EmployeUpdate?id=" + employeID);
-
-             var employe = new Employe();
-             TryUpdateModel(employe);
-             repository.UpdateEmploye(employe);
+            var employe = new Employee();
+            TryUpdateModel(employe);
+            _repository.UpdateEmployee(employe);
         }
 
         public void EmployeGrid_DeleteItem(int employeID)
@@ -36,11 +35,9 @@ namespace GTI.Especiales.Aprendizaje.Client
 
         }
 
-        public List<Employe> GetEmployes()
+        public List<Employee> GetEmployes()
         {
-            Employe employe = repository.GetEmployeById(1);
-
-            return repository.GetEmployes();
+            return _repository.GetAllEmployees();
         }
     }
 }

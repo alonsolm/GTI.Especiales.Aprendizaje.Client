@@ -4,7 +4,7 @@
 
     <asp:ValidationSummary runat="server" ShowModelStateErrors="true" />
     <asp:FormView runat="server" ID="AddEmployeForm"
-        ItemType="GTI.Especiales.Aprendizaje.Client.Models.Employe" 
+        ItemType="GTI.Especiales.Aprendizaje.Client.Models.Employee" 
         InsertMethod="AddEmployeForm_InsertItem" DefaultMode="Insert"
         RenderOuterTable="false" OnItemInserted="AddEmployeForm_ItemInserted"
         >

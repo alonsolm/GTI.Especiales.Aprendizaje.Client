@@ -240,7 +240,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Data\EmployeRepository.cs" />
+    <Compile Include="Data\EmployeeRepository.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -426,14 +426,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Common\Helpers.cs" />
     <Compile Include="Migrations\202107011801017_initial.cs" />
     <Compile Include="Migrations\202107011801017_initial.designer.cs">
       <DependentUpon>202107011801017_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Employe.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeContext.cs" />
     <Compile Include="Models\EmployeDatabaseInitializer.cs" />
+    <Compile Include="Models\Result.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

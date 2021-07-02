@@ -14,10 +14,10 @@ namespace GTI.Especiales.Aprendizaje.Client.Models
             GetProducts().ForEach(p => context.Employe.Add(p));
         }
 
-        private static List<Employe> GetProducts()
+        private static List<Employee> GetProducts()
         {
-            var employe = new List<Employe> {
-                new Employe
+            var employe = new List<Employee> {
+                new Employee
                 {
                     EmployeID = 1,
                     EmployeName = "name",

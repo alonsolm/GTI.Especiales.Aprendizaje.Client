@@ -13,17 +13,19 @@ namespace GTI.Especiales.Aprendizaje.Client
 {
     public partial class AddEmploye : System.Web.UI.Page
     {
-        protected EmployeRepository repository = new EmployeRepository();
+        private string _connectionString = ConfigurationManager.ConnectionStrings["ServerConnection"].ConnectionString;
+        private EmployeeRepository _repository;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            _repository = new EmployeeRepository(_connectionString);
         }
 
         public void AddEmployeForm_InsertItem()
         {
-            var employe = new Employe();
+            var employe = new Employee();
             TryUpdateModel(employe);
-            repository.AddEmploye(employe);
+            _repository.AddEmployee(employe);
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)

@@ -10,12 +10,12 @@ namespace GTI.Especiales.Aprendizaje.Client.Models
         public EmployeContext() : base("GTI.Especiales.Aprendizaje.Client")
         {
         }
-        public DbSet<Employe> Employe { get; set; }
+        public DbSet<Employee> Employe { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Employe>().HasKey(k => k.EmployeID);
+            modelBuilder.Entity<Employee>().HasKey(k => k.EmployeID);
         }
     }
 }

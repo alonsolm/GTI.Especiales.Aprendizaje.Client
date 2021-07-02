@@ -16,7 +16,7 @@
         protected override void Seed(GTI.Especiales.Aprendizaje.Client.Models.EmployeContext context)
         {
             context.Employe.AddOrUpdate(
-                new Employe
+                new Employee
                 {
                     EmployeID = 1,
                     EmployeName = "Alonso",
@@ -24,7 +24,7 @@
                     Salary = 22.50m,
                     Active = true
                 },
-                new Employe
+                new Employee
                 {
                     EmployeID = 2,
                     EmployeName = "Jesus",
@@ -32,7 +32,7 @@
                     Salary = 22.50m,
                     Active = true
                 },
-                new Employe
+                new Employee
                 {
                     EmployeID = 3,
                     EmployeName = "Tomas",
@@ -40,7 +40,7 @@
                     Salary = 22.50m,
                     Active = false
                 },
-                new Employe
+                new Employee
                 {
                     EmployeID = 4,
                     EmployeName = "Betty",
@@ -48,7 +48,7 @@
                     Salary = 22.50m,
                     Active = true
                 },
-                new Employe
+                new Employee
                 {
                     EmployeID = 5,
                     EmployeName = "Luis",
@@ -56,7 +56,7 @@
                     Salary = 22.50m,
                     Active = false
                 },
-                new Employe
+                new Employee
                 {
                     EmployeID = 6,
                     EmployeName = "Raul",
@@ -64,7 +64,7 @@
                     Salary = 22.50m,
                     Active = false
                 },
-                new Employe
+                new Employee
                 {
                     EmployeID = 7,
                     EmployeName = "Emilce",
