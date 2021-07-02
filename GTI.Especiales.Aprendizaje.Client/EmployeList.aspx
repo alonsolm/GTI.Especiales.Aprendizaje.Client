@@ -24,7 +24,7 @@
             <br /><br />
 
             <asp:GridView runat="server" ID="employeList"
-                ItemType="GTI.Especiales.Aprendizaje.Client.Models.Employe" DataKeyNames="EmployeID" 
+                ItemType="GTI.Especiales.Aprendizaje.Client.Models.Employee" DataKeyNames="EmployeID" 
                 SelectMethod="GetEmployes"
                 AutoGenerateColumns="false"
                 UpdateMethod="EmployeGrid_UpdateItem" DeleteMethod="EmployeGrid_DeleteItem"

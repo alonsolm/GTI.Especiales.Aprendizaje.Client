@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,21 +11,23 @@ namespace GTI.Especiales.Aprendizaje.Client
 {
     public partial class EmployeUpdate : System.Web.UI.Page
     {
-        private EmployeRepository repository = new EmployeRepository();
+        private string _connectionString = ConfigurationManager.ConnectionStrings["ServerConnection"].ConnectionString;
+        private EmployeeRepository _repository;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(Request.QueryString["id"]))
             {
-                Employe employe = repository.GetEmployeById(Int32.Parse(Request.QueryString["id"]));
+                _repository = new EmployeeRepository(_connectionString);
+                Employee employee = _repository.GetEmployeeById(Int32.Parse(Request.QueryString["id"]));
             }
         }
 
         public void UpdateEmployeForm_InsertItem()
         {
-            var employe = new Employe();
+            var employe = new Employee();
             TryUpdateModel(employe);
-            repository.AddEmploye(employe);
+            _repository.AddEmployee(employe);
         }
 
         protected void CancelUpdateButton_Click(object sender, EventArgs e)
