@@ -10,24 +10,33 @@
 namespace GTI.Especiales.Aprendizaje.Client {
     
     
-    public partial class EmployeUpdate {
+    public partial class EmployeeList {
         
         /// <summary>
-        /// UpdateEmployeForm control.
+        /// DysplayActive control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView UpdateEmployeForm;
+        protected global::System.Web.UI.WebControls.DropDownList DysplayActive;
         
         /// <summary>
-        /// TextBox1 control.
+        /// updPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.UpdatePanel updPanel;
+        
+        /// <summary>
+        /// employeeList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView employeeList;
     }
 }

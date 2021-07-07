@@ -16,8 +16,8 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
 {
     public class EmployeeRepository
     {
-        private const string CREATE_NAME_STORED_PROCEDURE = "Employe_Create";
-        private const string UPDATE_NAME_STORED_PROCEDURE = "Employe_Update";
+        private const string CREATE_NAME_STORED_PROCEDURE = "Employee_Create";
+        private const string UPDATE_NAME_STORED_PROCEDURE = "Employee_Update";
 
         private string _connectionString;
 
@@ -39,7 +39,7 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
                 {
                     sqlCommand.CommandType = CommandType.StoredProcedure;
 
-                    sqlCommand.Parameters.AddWithValue("@EmployeName", employee.EmployeName);
+                    sqlCommand.Parameters.AddWithValue("@EmployeeName", employee.EmployeeName);
 
                     sqlCommand.Parameters.AddWithValue("@RFC", employee.RFC);
 
@@ -51,8 +51,8 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
 
                     sqlCommand.Parameters.AddWithValue("@Active", employee.Active);
 
-                    sqlCommand.Parameters.Add(new SqlParameter("@EmployeID", SqlDbType.Int));
-                    sqlCommand.Parameters["@EmployeID"].Direction = ParameterDirection.Output;
+                    sqlCommand.Parameters.Add(new SqlParameter("@EmployeeID", SqlDbType.Int));
+                    sqlCommand.Parameters["@EmployeeID"].Direction = ParameterDirection.Output;
 
                     try
                     {
@@ -60,7 +60,7 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
                         
                         sqlCommand.ExecuteNonQuery();
                         
-                        employee.EmployeID = (int)sqlCommand.Parameters["@EmployeID"].Value;
+                        employee.EmployeeID = (int)sqlCommand.Parameters["@EmployeeID"].Value;
                         
                     }
                     catch (Exception e)
@@ -79,38 +79,39 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
 
         public void UpdateEmployee(Employee employee)
         {
+            Result result = Helpers.Success;
+
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand sqlCommand = new SqlCommand(UPDATE_NAME_STORED_PROCEDURE, connection))
                 {
                     sqlCommand.CommandType = CommandType.StoredProcedure;
-                    
-                    sqlCommand.Parameters.Add(new SqlParameter("@EmployeID", SqlDbType.NVarChar, 255));
-                    sqlCommand.Parameters["@EmployeID"].Value = employee.EmployeID;
 
-                    sqlCommand.Parameters.Add(new SqlParameter("@EmployeName", SqlDbType.NVarChar, 255));
-                    sqlCommand.Parameters["@EmployeName"].Value = employee.EmployeName;
+                    sqlCommand.Parameters.AddWithValue("@EmployeeID", employee.EmployeeID);
 
-                    sqlCommand.Parameters.Add(new SqlParameter("@RFC", SqlDbType.NVarChar, 50));
-                    sqlCommand.Parameters["@RFC"].Value = employee.RFC;
+                    sqlCommand.Parameters.AddWithValue("@EmployeeName", employee.EmployeeName);
 
-                    sqlCommand.Parameters.Add(new SqlParameter("@Salary", SqlDbType.Decimal));
-                    sqlCommand.Parameters["@Salary"].Value = employee.Salary;
+                    sqlCommand.Parameters.AddWithValue("@RFC", employee.RFC);
 
-                    sqlCommand.Parameters.Add(new SqlParameter("@Active", SqlDbType.Bit));
-                    sqlCommand.Parameters["@Active"].Value = employee.Active;
-                    
+                    SqlParameter salaryParam = new SqlParameter("@Salary", SqlDbType.Decimal);
+                    salaryParam.Precision = 18;
+                    salaryParam.Scale = 2;
+                    salaryParam.Value = employee.Salary;
+                    sqlCommand.Parameters.Add(salaryParam);
+
+                    sqlCommand.Parameters.AddWithValue("@Active", employee.Active);
+
 
                     try
                     {
                         connection.Open();
-                        
+
                         sqlCommand.ExecuteNonQuery();
-                        
+
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e.ToString());
+                        result = Helpers.OnError(e.Message);
                     }
                     finally
                     {
@@ -120,16 +121,16 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
             }
         }
 
-        public void DeleteEmployee(int employeID)
+        public void DeleteEmployee(int employeeID)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
+                Result result = Helpers.Success;
                 using (SqlCommand sqlCommand = new SqlCommand(UPDATE_NAME_STORED_PROCEDURE, connection))
                 {
                     sqlCommand.CommandType = CommandType.StoredProcedure;
 
-                    sqlCommand.Parameters.Add(new SqlParameter("@EmployeID", SqlDbType.NVarChar, 255));
-                    sqlCommand.Parameters["@EmployeID"].Value = employeID;
+                    sqlCommand.Parameters.AddWithValue("@EmployeeID", employeeID);
 
                     sqlCommand.Parameters.Add(new SqlParameter("@Active", SqlDbType.Bit));
                     sqlCommand.Parameters["@Active"].Value = false;
@@ -144,7 +145,7 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e.ToString());
+                        result = Helpers.OnError(e.Message);
                     }
                     finally
                     {
@@ -156,7 +157,7 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
 
         public List<Employee> GetAllEmployees()
         {
-            var queryDb = @"SELECT * FROM Employe";
+            var queryDb = @"SELECT * FROM Employee";
             SqlConnection connection = new SqlConnection(_connectionString);
             SqlCommand sqlCommand = new SqlCommand(queryDb, connection);
             connection.Open();
@@ -167,8 +168,8 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
             while (reader.Read())
             {
                 Employee entity = new Employee();
-                entity.EmployeID = (int)reader["EmployeID"];
-                entity.EmployeName = (string)reader["EmployeName"];
+                entity.EmployeeID = (int)reader["EmployeeID"];
+                entity.EmployeeName = (string)reader["EmployeeName"];
                 entity.RFC = (string)reader["RFC"];
                 entity.Salary = (Decimal)reader["Salary"];
                 entity.Active = (Boolean)reader["Active"];
@@ -178,13 +179,13 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
             return customers;
         }
 
-        public Employee GetEmployeeById(int employeID)
+        public Employee GetEmployeeById(int employeeID)
         {
-            var queryDb = @"SELECT * FROM Employe WHERE EmployeID = @employeID";
+            var queryDb = @"SELECT * FROM Employee WHERE EmployeeID = @employeeID";
 
             SqlConnection connection = new SqlConnection(_connectionString);
             SqlCommand sqlCommand = new SqlCommand(queryDb, connection);
-            sqlCommand.Parameters.Add(new SqlParameter("@employeID", employeID));
+            sqlCommand.Parameters.Add(new SqlParameter("@employeeID", employeeID));
             connection.Open();
 
             SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -192,8 +193,8 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
             Employee employee = new Employee();
 
             if (reader.Read()) {
-                employee.EmployeID = (int)reader["EmployeID"];
-                employee.EmployeName = (string)reader["EmployeName"];
+                employee.EmployeeID = (int)reader["EmployeeID"];
+                employee.EmployeeName = (string)reader["EmployeeName"];
                 employee.RFC = (string)reader["RFC"];
                 employee.Salary = (Decimal)reader["Salary"];
                 employee.Active = (Boolean)reader["Active"];

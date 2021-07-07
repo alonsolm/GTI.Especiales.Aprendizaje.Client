@@ -15,7 +15,7 @@ namespace GTI.Especiales.Aprendizaje.Client.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Employee>().HasKey(k => k.EmployeID);
+            modelBuilder.Entity<Employee>().HasKey(k => k.EmployeeID);
         }
     }
 }

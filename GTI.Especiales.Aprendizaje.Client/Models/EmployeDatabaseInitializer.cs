@@ -19,8 +19,8 @@ namespace GTI.Especiales.Aprendizaje.Client.Models
             var employe = new List<Employee> {
                 new Employee
                 {
-                    EmployeID = 1,
-                    EmployeName = "name",
+                    EmployeeID = 1,
+                    EmployeeName = "name",
                     RFC = "rfc",
                     Salary = 22.50m,
                }

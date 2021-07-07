@@ -7,9 +7,11 @@ namespace GTI.Especiales.Aprendizaje.Client.Models
 {
     public class Employee
     {
-        public int EmployeID { get; set; }
-        public string EmployeName { get; set; }
+        [ScaffoldColumn(false)]
+        public int EmployeeID { get; set; }
+        public string EmployeeName { get; set; }
         public string RFC { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal Salary { get; set; }
         public bool Active { get; set; }
 
