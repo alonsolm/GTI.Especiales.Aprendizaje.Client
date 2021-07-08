@@ -12,6 +12,28 @@
             height: 17px;
             margin-bottom: 10px;
         }
+        table tbody tr td table tbody tr td{
+              color: black;
+              float: left;
+              padding: 8px 12px;
+              text-decoration: none;
+              font-size: 16px;
+              font-weight: bold;
+        }
+        table tbody tr th{
+            border-bottom: 2px solid #dee2e6;
+            border-top: 2px solid #dee2e6;
+        }
+        .btn-group{
+              padding: 0 1em 0 0;
+              margin: 0;
+              width: 100%;
+              font-family: inherit;
+              font-size: inherit;
+              cursor: inherit;
+              line-height: inherit;
+              height: 4rem;
+        }
     </style>
 
     <section>
@@ -21,14 +43,19 @@
             </hgroup>
                 <asp:Label runat="server">Mostrar</asp:Label>
             <div style="display:grid; grid-template-columns:1fr 1fr">
-               <asp:DropDownList ID="DysplayActive"
-                    AutoPostBack="True"
-                    runat="server"
-                    class="btn-group">
-                    <asp:ListItem Text="Todos" Value="" />
-                    <asp:ListItem Text="Activos" />
-                    <asp:ListItem Text="Inactivos" />
-               </asp:DropDownList>
+                <asp:UpdatePanel runat="server">
+                     <ContentTemplate>
+                       <asp:DropDownList ID="DysplayActive"
+                            AutoPostBack="True"
+                            runat="server"
+                            class="btn-group">
+                            <asp:ListItem Text="Todos" Value="" />
+                            <asp:ListItem Text="Activos" />
+                            <asp:ListItem Text="Inactivos" />
+                       </asp:DropDownList>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+                    <asp:ValidationSummary runat="server" ShowModelStateErrors="true"/>
                 <div     class="text-right">
                     <button type="button" style="background-color:#007bff" class="btn" >
                         <asp:HyperLink NavigateUrl="~/AddEmployee" style="color:#fff" Text="Crear Empleado" runat="server"/>
@@ -41,7 +68,7 @@
                 <ContentTemplate>
                     <asp:GridView
                         AllowSorting="true"
-                        emptydatatext="No data available." 
+                        emptydatatext="No hay información disponible." 
                         allowpaging="true"
                         startRowIndex="1"
                         maximumRows="10"

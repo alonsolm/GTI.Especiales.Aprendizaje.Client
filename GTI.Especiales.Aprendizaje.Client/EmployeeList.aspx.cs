@@ -33,19 +33,28 @@ namespace GTI.Especiales.Aprendizaje.Client
             _repository.DeleteEmployee(employee.EmployeeID);
         }
 
-        public IQueryable<Employee> GetEmployees([Control] bool? DysplayActive)
+        public IQueryable<Employee> GetEmployees([Control] String dysplayActive)
         {
-             /*return new List<Employee>
-             {
-                 new Employee
-                 {
-                     EmployeeID = 1,
-                     EmployeeName = "Alonso Lares",
-                     RFC = "LAMA940810HBCRJL00",
-                     Salary = 22,
-                     Active = true
-                 }
-             };*/
+            /*return new List<Employee>
+            {
+                new Employee
+                {
+                    EmployeeID = 1,
+                    EmployeeName = "Alonso Lares",
+                    RFC = "LAMA940810HBCRJL00",
+                    Salary = 22,
+                    Active = true
+                }
+            };*/
+            switch (dysplayActive)
+            {
+                case "Activos":
+                    return _repository.GetAllEmployees().AsQueryable().Where(e => e.Active == true);
+                case "Inactivos":
+                    return _repository.GetAllEmployees().AsQueryable().Where(e => e.Active == false);
+                case "Todos":
+                    return _repository.GetAllEmployees().AsQueryable();
+            }
             return _repository.GetAllEmployees().AsQueryable();
         }
         
