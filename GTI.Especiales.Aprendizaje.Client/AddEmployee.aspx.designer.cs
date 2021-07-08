@@ -22,6 +22,24 @@ namespace GTI.Especiales.Aprendizaje.Client {
         protected global::System.Web.UI.WebControls.TextBox Name;
         
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        
+        /// <summary>
         /// RFC control.
         /// </summary>
         /// <remarks>
@@ -31,6 +49,24 @@ namespace GTI.Especiales.Aprendizaje.Client {
         protected global::System.Web.UI.WebControls.TextBox RFC;
         
         /// <summary>
+        /// RFCRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFCRequiredFieldValidator;
+        
+        /// <summary>
+        /// RFCRegularExpressionValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RFCRegularExpressionValidator;
+        
+        /// <summary>
         /// Salary control.
         /// </summary>
         /// <remarks>
@@ -38,6 +74,33 @@ namespace GTI.Especiales.Aprendizaje.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Salary;
+        
+        /// <summary>
+        /// RangeValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator2;
+        
+        /// <summary>
+        /// ActiveSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ActiveSection;
+        
+        /// <summary>
+        /// lblActive control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblActive;
         
         /// <summary>
         /// Active control.

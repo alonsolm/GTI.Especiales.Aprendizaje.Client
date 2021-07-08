@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.ModelBinding;
 
 namespace GTI.Especiales.Aprendizaje.Client
 {
@@ -25,14 +26,16 @@ namespace GTI.Especiales.Aprendizaje.Client
             Response.Redirect("~/AddEmployee?id=" + employee.EmployeeID);
         }
 
-        public void EmployeeGrid_DeleteItem(int employeeID)
+        public void EmployeeGrid_DeleteItem()
         {
-            _repository.DeleteEmployee(employeeID);
+            var employee = new Employee();
+            TryUpdateModel(employee);
+            _repository.DeleteEmployee(employee.EmployeeID);
         }
 
-        public List<Employee> GetEmployees()
+        public IQueryable<Employee> GetEmployees([Control] bool? DysplayActive)
         {
-            /* return new List<Employee>
+             /*return new List<Employee>
              {
                  new Employee
                  {
@@ -43,24 +46,9 @@ namespace GTI.Especiales.Aprendizaje.Client
                      Active = true
                  }
              };*/
-            return _repository.GetAllEmployees();
+            return _repository.GetAllEmployees().AsQueryable();
         }
-
-        protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                string item = e.Row.Cells[0].Text;
-                foreach (Button button in e.Row.Cells[2].Controls.OfType<Button>())
-                {
-                    if (button.CommandName == "Delete")
-                    {
-                        button.Attributes["onclick"] = "if(!confirm('Do you want to delete " + item + "?')){ return false; };";
-                    }
-                }
-            }
-        }
-
+        
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)(sender);
@@ -69,35 +57,11 @@ namespace GTI.Especiales.Aprendizaje.Client
 
         }
 
-
         protected void GoToUpdateView(object sender, ImageClickEventArgs e)
         {
             var employee = new Employee();
             TryUpdateModel(employee);
             Response.Redirect("~/AddEmployee?id=" + employee.EmployeeID);
-        }
-
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "edituser")
-            {
-                // Retrieve the row index stored in the 
-                // CommandArgument property.
-                int index = Convert.ToInt32(e.CommandArgument);
-
-                // Retrieve the row that contains the buttonfrom the Rows collection.
-                GridViewRow row = employeeList.Rows[index];
-
-                // Add code here now you have the specific row data
-            }
-
-        }
-        
-
-        protected void employeeList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
         }
     }
 }
