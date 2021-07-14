@@ -12,8 +12,45 @@
         .checkboxActive{
             margin-left: 26px;
         }
+        .btn-create{
+            background-color: #007bff;
+            padding: .85em 2.5527em;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            letter-spacing: .8px;
+        }
+        .btn-create:hover{
+            text-decoration: underline ;
+        }
+        .btn-cancel:hover{
+            text-decoration: underline ;
+        }
+        .btn-cancel{
+            background-color: #6c757d;
+            padding: .85em 1.802em;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            letter-spacing: .8px;
+        }
+        span{
+           font-size: 17px;
+           letter-spacing: 1px;
+        }
+        .body-content{
+            padding-top: 4em;
+        }
+        .container-buttons{
+            margin-top: 1em;
+        }
+        .container-buttons input{
+            color: white;
+        }
+        .form-control{
+            height: 46px;
+        }
     </style>
-    <hr />
     <div class="row">
         <div class="col-md-8">
             <section>
@@ -24,7 +61,7 @@
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="Name" CssClass="form-control" />
                             <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator1" runat="server" ControlToValidate="Name" CssClass="text-danger" ErrorMessage="El Nombre es requerido." />
-                            <asp:RegularExpressionValidator Display="Dynamic"  ID="RegularExpressionValidator1" runat="server"  CssClass="text-danger" ControlToValidate="Name" ValidationExpression="^[A-Za-z_\s][A-Za-z0-9_\s]{0,253}$" ErrorMessage="El nombre solo permite un maximo de 255 letras." />
+                            <asp:RegularExpressionValidator Display="Dynamic"  ID="RegularExpressionValidator1" runat="server"  CssClass="text-danger" ControlToValidate="Name" ValidationExpression="^[A-Za-z_\s][A-Za-z0-9_\s]{0,253}$" ErrorMessage="El nombre solo permite un máximo de 255 letras." />
 
                         </div>
                     </div>
@@ -48,7 +85,7 @@
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="Salary" CssClass="form-control" />
                             <asp:RequiredFieldValidator Display="Dynamic" runat="server" Type="Integer" ControlToValidate="Salary" CssClass="text-danger" ErrorMessage="El Salario es requerido." />
-                            <asp:RangeValidator Display="Dynamic" id="RangeValidator2" CssClass="text-danger" ControlToValidate="Salary" MinimumValue="1" MaximumValue="100000000000000000" Type="Double" Text="El Salario tiene que ser mayor a 0 y menor a 19 numeros." runat="server"/>
+                            <asp:RangeValidator Display="Dynamic" id="RangeValidator2" CssClass="text-danger" ControlToValidate="Salary" MinimumValue="1" MaximumValue="100000000000000000" Type="Double" Text="El Salario tiene que ser mayor a 0." runat="server"/>
                         </div>
                     </div>
 
@@ -62,9 +99,9 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <asp:Button ID="BtnAddUpdate" runat="server" OnClick="AddUpdateEmployeeForm_InsertItem" Text="Crear" Style="background-color: #0069d9; color: #fff" CssClass="btn" />
-                            <asp:Button CausesValidation="false" ID="BtnDeleteCancel" runat="server" Text="Cancelar" OnClick="CancelButton_Click" Style="background-color: #6c757d; color: #fff" class="btn" />
+                        <div class="col-md-offset-2 col-md-10 container-buttons">
+                            <asp:Button ID="BtnAddUpdate" runat="server" OnClick="AddUpdateEmployeeForm_InsertItem" Text="Crear" class="btn-create" />
+                            <asp:Button CausesValidation="false" ID="BtnDeleteCancel" runat="server" Text="Cancelar" OnClick="CancelButton_Click" class="btn-cancel" />
                         </div>
                     </div>
                 </div>

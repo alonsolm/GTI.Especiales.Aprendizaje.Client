@@ -14,8 +14,34 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <style type="text/css">
+        body{
+            font-family: "Source Sans Pro",sans-serif;
+        }
+        .navbar-fixed-top{
+            background-color: #54b4eb;
+            padding: 1em;
+        }
+        .navbar-fixed-top a{
+            color: white;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+        .nav > li > a {
+            transition: 0.8s;
+            border-radius: 2px;
+        }
+        .nav > li > a:hover {
+            background-color: #0066CC;
+        }
+        .body-content{
+
+        }
+
+    </style>
 
 </head>
+
 <body>
     <form runat="server">
         <asp:ScriptManager runat="server">
@@ -38,7 +64,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class=" navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -58,9 +84,7 @@
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %></p>
             </footer>
         </div>
 

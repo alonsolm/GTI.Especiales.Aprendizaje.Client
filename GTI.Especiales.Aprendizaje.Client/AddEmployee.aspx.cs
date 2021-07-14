@@ -27,6 +27,7 @@ namespace GTI.Especiales.Aprendizaje.Client
                 this.Salary.Text = employee.Salary.ToString();
                 this.Active.Checked = employee.Active;
                 this.BtnAddUpdate.Text = "Modificar";
+                this.BtnAddUpdate.Style.Add("padding", ".85em 1.802em");
             }
             else
             {
