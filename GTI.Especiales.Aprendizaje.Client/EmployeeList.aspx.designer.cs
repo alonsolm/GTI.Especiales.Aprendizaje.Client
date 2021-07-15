@@ -7,20 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GTI.Especiales.Aprendizaje.Client {
-    
-    
-    public partial class EmployeeList {
-        
+namespace GTI.Especiales.Aprendizaje.Client
+{
+
+
+    public partial class EmployeeList
+    {
+
         /// <summary>
-        /// DysplayActive control.
+        /// DisplayActive control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DysplayActive;
-        
+        protected global::System.Web.UI.WebControls.DropDownList DisplayActive;
+
         /// <summary>
         /// updPanel control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace GTI.Especiales.Aprendizaje.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPanel;
-        
+
         /// <summary>
         /// employeeList control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace GTI.Especiales.Aprendizaje.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView employeeList;
-        
+
         /// <summary>
         /// CounterSection control.
         /// </summary>

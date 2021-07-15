@@ -111,7 +111,7 @@
                 <div style="display:grid; grid-template-columns:1fr 1fr">
                     <asp:UpdatePanel runat="server">
                          <ContentTemplate>
-                           <asp:DropDownList ID="DysplayActive"
+                           <asp:DropDownList ID="DisplayActive"
                                 AutoPostBack="True"
                                 runat="server"
                                 class="btn-group">
@@ -160,11 +160,11 @@
                                     </Columns>
                                 </asp:GridView>
                                <div id="CounterSection" runat="server" class="counters" >
-                                    <asp:Label runat="server">Total <%= this.Total %></asp:Label>
+                                    <asp:Label runat="server">Total <%= this.TotalEmployees %></asp:Label>
                                     <br />
-                                    <asp:Label runat="server">Activos <%= this.Activos %></asp:Label>
+                                    <asp:Label runat="server">Activos <%= this.ActiveEmployees %></asp:Label>
                                     <br />
-                                    <asp:Label runat="server">Inacivos <%= this.Inactivos %></asp:Label>
+                                    <asp:Label runat="server">Inacivos <%= this.DisabledEmployees %></asp:Label>
                                 </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>

@@ -77,7 +77,7 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
             return result;
         }
 
-        public void UpdateEmployee(Employee employee)
+        public Result UpdateEmployee(Employee employee)
         {
             Result result = Helpers.Success;
 
@@ -119,13 +119,16 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
                     }
                 }
             }
+
+            return result;
         }
 
-        public void DeleteEmployee(int employeeID)
+        public Result DeleteEmployee(int employeeID)
         {
+            Result result = Helpers.Success;
+
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                Result result = Helpers.Success;
                 using (SqlCommand sqlCommand = new SqlCommand(UPDATE_NAME_STORED_PROCEDURE, connection))
                 {
                     sqlCommand.CommandType = CommandType.StoredProcedure;
@@ -153,30 +156,35 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
                     }
                 }
             }
+
+            return result;
         }
 
         public List<Employee> GetAllEmployees()
         {
+            List<Employee> employees = new List<Employee>();
             var queryDb = @"SELECT * FROM Employee";
             SqlConnection connection = new SqlConnection(_connectionString);
             SqlCommand sqlCommand = new SqlCommand(queryDb, connection);
-            connection.Open();
 
-            SqlDataReader reader = sqlCommand.ExecuteReader();
-
-            List<Employee> customers = new List<Employee>();
-            while (reader.Read())
+            try
             {
-                Employee entity = new Employee();
-                entity.EmployeeID = (int)reader["EmployeeID"];
-                entity.EmployeeName = (string)reader["EmployeeName"];
-                entity.RFC = (string)reader["RFC"];
-                entity.Salary = (Decimal)reader["Salary"];
-                entity.Active = (Boolean)reader["Active"];
-                customers.Add(entity);
+                connection.Open();
+
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Employee employee = new Employee();
+                    FromDbResultToEmployee(reader, employee);
+                    employees.Add(employee);
+                }
             }
-            
-            return customers;
+            catch
+            {
+            }
+
+            return employees;
         }
 
         public Employee GetEmployeeById(int employeeID)
@@ -193,15 +201,19 @@ namespace GTI.Especiales.Aprendizaje.Client.Data
             Employee employee = new Employee();
 
             if (reader.Read()) {
-                employee.EmployeeID = (int)reader["EmployeeID"];
-                employee.EmployeeName = (string)reader["EmployeeName"];
-                employee.RFC = (string)reader["RFC"];
-                employee.Salary = (Decimal)reader["Salary"];
-                employee.Active = (Boolean)reader["Active"];
+                FromDbResultToEmployee(reader, employee);
             }
 
             return employee;
         }
 
+        private void FromDbResultToEmployee(SqlDataReader reader, Employee employee)
+        {
+            employee.EmployeeID = (int)reader["EmployeeID"];
+            employee.EmployeeName = (string)reader["EmployeeName"];
+            employee.RFC = (string)reader["RFC"];
+            employee.Salary = (decimal)reader["Salary"];
+            employee.Active = (bool)reader["Active"];
+        }
     }
 }

@@ -6,9 +6,8 @@ using System.Configuration;
 using GTI.Especiales.Aprendizaje.Client.Data;
 namespace GTI.Especiales.Aprendizaje.Client.Models
 {
-    public class Connection
+    public static class Globals
     {
-        private string _connectionString = ConfigurationManager.ConnectionStrings["ServerConnection"].ConnectionString;
-        private EmployeeRepository _repository;
+        public static string ConnectionString = ConfigurationManager.ConnectionStrings["ServerConnection"].ConnectionString;
     }
 }
