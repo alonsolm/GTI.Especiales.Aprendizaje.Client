@@ -1,0 +1,27 @@
+﻿body {
+    font-family: "Source Sans Pro",sans-serif;
+}
+
+.navbar-fixed-top {
+    background-color: #54b4eb;
+    padding: 1em;
+}
+
+    .navbar-fixed-top a {
+        color: white;
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+
+.nav > li > a {
+    transition: 0.8s;
+    border-radius: 2px;
+}
+
+    .nav > li > a:hover {
+        background-color: #0066CC;
+    }
+
+.body-content .jumbotron {
+    margin-top: 8em;
+}

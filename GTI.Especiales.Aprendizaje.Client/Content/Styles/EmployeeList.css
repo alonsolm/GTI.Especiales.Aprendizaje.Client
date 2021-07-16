@@ -1,0 +1,90 @@
+﻿section {
+    margin-top: 5em;
+}
+
+td, th {
+    text-align: center;
+}
+
+.hiper-link img {
+    width: 16px;
+    height: 17px;
+    margin-bottom: 10px;
+}
+
+table {
+    letter-spacing: .5px;
+    font-size: 16px;
+    border: .5px solid #CCC;
+    border-radius: 4px;
+    border: none;
+}
+
+td {
+    border: none;
+}
+
+table tbody tr td table tbody tr td {
+    color: black;
+    padding: 8px 12px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+    table tbody tr td table tbody tr td a {
+        color: #54b4eb;
+        font-weight: normal;
+    }
+
+table tbody tr td table {
+    border: none;
+}
+
+table tbody tr th {
+    border-bottom: 2px solid #dee2e6;
+}
+
+table tbody tr th {
+    border-top: none;
+    border: none;
+}
+
+    table tbody tr th a {
+        color: black;
+        font-weight: bold;
+    }
+
+.btn-group {
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: inherit;
+    line-height: inherit;
+    height: 4.5rem;
+    letter-spacing: 2px;
+    border: .5px solid #CCC;
+    border-radius: 4px;
+}
+
+.counters {
+    letter-spacing: 3px;
+    font-size: 12px;
+    text-align: right;
+}
+
+.label-mostrar {
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.btn {
+    padding: .8em 1em;
+    font-size: 16px;
+    letter-spacing: .8px;
+}
+
+.table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 1.5em;
+}

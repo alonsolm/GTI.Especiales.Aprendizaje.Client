@@ -1,56 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddEmployee.aspx.cs" Inherits="GTI.Especiales.Aprendizaje.Client.AddEmployee" %>
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="MainContent">
+    <link href="Content/Styles/AddEmployee.css" type="text/css" rel="stylesheet" />
     <script>
     $(document).ready(function(){
       $('[data-toggle="tooltip"]').tooltip();   
     });
     </script>
-    <style type="text/css">
-        .checkbox{
-            bottom: 9px
-        }
-        .checkboxActive{
-            margin-left: 26px;
-        }
-        .btn-create{
-            background-color: #007bff;
-            padding: .85em 2.5527em;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            letter-spacing: .8px;
-        }
-        .btn-create:hover{
-            text-decoration: underline ;
-        }
-        .btn-cancel:hover{
-            text-decoration: underline ;
-        }
-        .btn-cancel{
-            background-color: #6c757d;
-            padding: .85em 1.802em;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            letter-spacing: .8px;
-        }
-        span{
-           font-size: 17px;
-           letter-spacing: 1px;
-        }
-        .body-content{
-            padding-top: 4em;
-        }
-        .container-buttons{
-            margin-top: 1em;
-        }
-        .container-buttons input{
-            color: white;
-        }
-        .form-control{
-            height: 46px;
-        }
-    </style>
     <div class="row">
         <div class="col-md-8">
             <section>

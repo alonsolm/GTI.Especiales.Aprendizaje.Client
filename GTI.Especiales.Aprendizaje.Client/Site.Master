@@ -14,32 +14,7 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <style type="text/css">
-        body{
-            font-family: "Source Sans Pro",sans-serif;
-        }
-        .navbar-fixed-top{
-            background-color: #54b4eb;
-            padding: 1em;
-        }
-        .navbar-fixed-top a{
-            color: white;
-            font-size: 18px;
-            letter-spacing: 1px;
-        }
-        .nav > li > a {
-            transition: 0.8s;
-            border-radius: 2px;
-        }
-        .nav > li > a:hover {
-            background-color: #0066CC;
-        }
-        .body-content{
-
-        }
-
-    </style>
-
+    <link href="Content/Styles/Master.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body>

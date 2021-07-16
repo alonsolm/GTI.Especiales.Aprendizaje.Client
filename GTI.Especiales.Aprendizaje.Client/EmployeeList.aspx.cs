@@ -60,21 +60,6 @@ namespace GTI.Especiales.Aprendizaje.Client
             this.ActiveEmployees = employees.Count(p => p.Active == true);
             this.DisabledEmployees = (this.TotalEmployees - this.ActiveEmployees);
         }
-
-        protected override void OnSaveStateComplete(EventArgs e)
-        {
-            CalculateCountPanel();
-
-            void CalculateCountPanel()
-            {
-                var Rows = this.employeeList.Rows.Count;
-                Control CounterSection = FindControl("CounterSection");
-                double RowsHeightDouble = ((Rows * 78.34) + 516) / 16;
-                String RowsHeightString = RowsHeightDouble.ToString() + "em";
-                this.CounterSection.Style.Add("top", RowsHeightString);
-            }
-        }
-
         public void EmployeeGrid_UpdateItem(int employeeID)
         {
             Response.Redirect($"~/AddEmployee?id={employeeID}");
